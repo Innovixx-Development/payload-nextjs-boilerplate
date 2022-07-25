@@ -3,7 +3,9 @@ import NextHead from 'next/head';
 import getConfig from 'next/config';
 import { useRouter } from 'next/router';
 
-const { publicRuntimeConfig: { SERVER_URL } } = getConfig();
+const {
+  publicRuntimeConfig: { SERVER_URL },
+} = getConfig();
 
 const defaultDescription = 'Boilerplate for combining Payload CMS and NextJS into a single Node server';
 const defaultTitle = 'Payload CMS + NextJS Custom Server';
@@ -12,13 +14,18 @@ const defaultOGImage = `${SERVER_URL}/images/og-image.jpg`;
 const defaultKeywords = 'NextJS, Payload CMS, boilerplate';
 
 type Props = {
-  title?: string,
-  description?: string,
-  ogImage?: string,
-  keywords?: string,
+  title?: string;
+  description?: string;
+  ogImage?: string;
+  keywords?: string;
 };
 
-const Head: React.FC<Props> = ({ title, description, ogImage, keywords }) => {
+export const Head: React.FC<Props> = ({
+  title,
+  description,
+  ogImage,
+  keywords,
+}) => {
   const { asPath } = useRouter();
 
   const getTitle = () => {
@@ -28,9 +35,7 @@ const Head: React.FC<Props> = ({ title, description, ogImage, keywords }) => {
 
   return (
     <NextHead>
-      <title>
-        {getTitle()}
-      </title>
+      <title>{getTitle()}</title>
       <link
         rel="icon"
         type="image/x-icon"
@@ -83,5 +88,3 @@ const Head: React.FC<Props> = ({ title, description, ogImage, keywords }) => {
     </NextHead>
   );
 };
-
-export default Head;

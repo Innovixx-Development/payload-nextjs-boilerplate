@@ -2,34 +2,15 @@
 import React from 'react';
 import Link from 'next/link';
 import { Block } from 'payload/types';
-import { Type as Page } from '../../collections/Page';
 import RichText from '../../components/RichText';
 import classes from './index.module.css';
-
-export type Button = {
-  type: 'page'
-  label: string
-  page: Page
-} | {
-  type: 'custom'
-  label: string
-  url: string
-  newTab: boolean
-}
-
-export type Type = {
-  blockType: 'cta'
-  blockName?: string
-  content: unknown
-  buttons: Button[]
-}
 
 type Data = Record<string, unknown>;
 
 const customURLCondition = (_: Data, siblings: Data): boolean => siblings.type === 'custom';
 
 export const CallToAction: Block = {
-  slug: 'cta',
+  slug: 'callToAction',
   labels: {
     singular: 'Call to Action',
     plural: 'Calls to Action',
@@ -118,7 +99,7 @@ export const CallToAction: Block = {
   ],
 };
 
-export const Component: React.FC<Type> = (props) => {
+export const CallToActionComponent: React.FC<any> = (props) => {
   const { content, buttons } = props;
 
   return (
@@ -129,32 +110,30 @@ export const Component: React.FC<Type> = (props) => {
           className={classes.content}
         />
         {buttons && (
-        <ul className={classes.buttons}>
-          {buttons.map((button, i) => (
-            <li key={i}>
-              {button.type === 'page' && (
-                <Link
-                  href="[...slug]"
-                  as={`/${button.page.slug}`}
-                >
-                  <a className={classes.button}>
+          <ul className={classes.buttons}>
+            {buttons.map((button, i) => (
+              <li key={i}>
+                {button.type === 'page' && (
+                  <Link
+                    href="[...slug]"
+                    as={`/${button.page.slug}`}
+                  >
+                    <a className={classes.button}>{button.label}</a>
+                  </Link>
+                )}
+                {button.type === 'custom' && (
+                  <a
+                    className={classes.button}
+                    href={button.url}
+                    target={button.newTab ? '_blank' : undefined}
+                    rel="noopener noreferrer"
+                  >
                     {button.label}
                   </a>
-                </Link>
-              )}
-              {button.type === 'custom' && (
-                <a
-                  className={classes.button}
-                  href={button.url}
-                  target={button.newTab ? '_blank' : undefined}
-                  rel="noopener noreferrer"
-                >
-                  {button.label}
-                </a>
-              )}
-            </li>
-          ))}
-        </ul>
+                )}
+              </li>
+            ))}
+          </ul>
         )}
       </div>
     </div>

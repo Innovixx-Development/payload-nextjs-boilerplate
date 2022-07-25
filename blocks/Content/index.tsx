@@ -3,12 +3,6 @@ import { Block } from 'payload/types';
 import RichText from '../../components/RichText';
 import classes from './index.module.css';
 
-export type Type = {
-  blockType: 'content'
-  blockName?: string
-  content: unknown
-}
-
 export const Content: Block = {
   slug: 'content',
   labels: {
@@ -23,7 +17,7 @@ export const Content: Block = {
   ],
 };
 
-export const Component: React.FC<Type> = (props) => {
+export const ContentComponent: React.FC<any> = (props) => {
   const { content } = props;
 
   return (
@@ -35,5 +29,3 @@ export const Component: React.FC<Type> = (props) => {
     </div>
   );
 };
-
-export default Content;

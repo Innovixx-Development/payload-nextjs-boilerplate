@@ -1,18 +1,9 @@
 import React from 'react';
 import NextImage from 'next/image';
 import { Block } from 'payload/types';
-import { MediaType } from '../../collections/Media';
 import RichText from '../../components/RichText';
 import classes from './index.module.css';
 import { sizes } from './sizes';
-
-export type Type = {
-  blockType: 'image'
-  blockName?: string
-  image: MediaType
-  caption?: any
-  type: 'normal' | 'wide' | 'fullscreen'
-}
 
 export const Image: Block = {
   slug: 'image',
@@ -56,15 +47,13 @@ export const Image: Block = {
       label: 'Caption',
       type: 'richText',
       admin: {
-        elements: [
-          'link',
-        ],
+        elements: ['link'],
       },
     },
   ],
 };
 
-export const Component: React.FC<Type> = (props) => {
+export const ImageComponent: React.FC<any> = (props) => {
   const { image, type, caption } = props;
 
   if (typeof image === 'object') {
@@ -78,7 +67,9 @@ export const Component: React.FC<Type> = (props) => {
       height = image.sizes[type].height;
     }
 
-    const sizesToUse = sizes.map((size) => `(max-width: ${size}px) ${size}px`).join(', ');
+    const sizesToUse = sizes
+      .map((size) => `(max-width: ${size}px) ${size}px`)
+      .join(', ');
 
     return (
       <div className={`${classes.wrap} ${classes[type]}`}>
@@ -90,10 +81,10 @@ export const Component: React.FC<Type> = (props) => {
           height={height}
         />
         {caption && (
-          <RichText
-            className={classes.caption}
-            content={caption}
-          />
+        <RichText
+          className={classes.caption}
+          content={caption}
+        />
         )}
       </div>
     );
