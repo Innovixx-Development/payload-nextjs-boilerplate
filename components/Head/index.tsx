@@ -1,16 +1,11 @@
 import React from 'react';
 import NextHead from 'next/head';
-import getConfig from 'next/config';
 import { useRouter } from 'next/router';
-
-const {
-  publicRuntimeConfig: { SERVER_URL },
-} = getConfig();
 
 const defaultDescription = 'Boilerplate for combining Payload CMS and NextJS into a single Node server';
 const defaultTitle = 'Payload CMS + NextJS Custom Server';
 const titleSuffix = ' | Payload CMS';
-const defaultOGImage = `${SERVER_URL}/images/og-image.jpg`;
+const defaultOGImage = `${process.env.NEXT_PUBLIC_SERVER_URL}/images/og-image.jpg`;
 const defaultKeywords = 'NextJS, Payload CMS, boilerplate';
 
 type Props = {
@@ -55,7 +50,7 @@ export const Head: React.FC<Props> = ({
       />
       <meta
         property="og:url"
-        content={`${SERVER_URL}${asPath}`}
+        content={`${process.env.NEXT_PUBLIC_SERVER_URL}${asPath}`}
       />
       <meta
         property="og:title"
