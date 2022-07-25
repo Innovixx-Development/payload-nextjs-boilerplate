@@ -1,21 +1,21 @@
 import React from 'react';
-import { Layout } from '../../collections/Page';
-import { components } from '../../blocks';
 import classes from './index.module.css';
+import { Page } from '../../payload-types';
+import * as blocks from '../../blocks';
 
 type Props = {
-  layout: Layout[]
-  className?: string
-}
+  layout: Page['layout'];
+  className?: string;
+};
 
-const RenderBlocks: React.FC<Props> = ({ layout, className }) => (
-  <div className={[
-    classes.renderBlocks,
-    className,
-  ].filter(Boolean).join(' ')}
-  >
+export const RenderBlocks: React.FC<Props> = ({ layout, className }) => (
+  <div className={[classes.renderBlocks, className].filter(Boolean).join(' ')}>
     {layout.map((block, i) => {
-      const Block: React.FC<any> = components[block.blockType];
+      // make blockType first character uppercase
+      const blockType = `${
+        block.blockType.charAt(0).toUpperCase() + block.blockType.slice(1)
+      }Component`;
+      const Block: React.FC<any> = blocks[blockType];
 
       if (Block) {
         return (
@@ -32,5 +32,3 @@ const RenderBlocks: React.FC<Props> = ({ layout, className }) => (
     })}
   </div>
 );
-
-export default RenderBlocks;

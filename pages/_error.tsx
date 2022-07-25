@@ -2,8 +2,8 @@ import React from 'react';
 import { GetServerSideProps } from 'next';
 
 type Props = {
-  statusCode: number
-}
+  statusCode: number;
+};
 
 const Error: React.FC<Props> = ({ statusCode }) => (
   <p>

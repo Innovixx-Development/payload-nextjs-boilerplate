@@ -1332,6 +1332,15 @@
     gud "^1.0.0"
     warning "^4.0.3"
 
+"@innovixx/eslint-config@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@innovixx/eslint-config/-/eslint-config-1.0.3.tgz#70e864ec6a4af1859f02a9a43cea94a5cb784de0"
+  integrity sha512-ni0EfMAJd6/m8SE7sdHrvo+SDmIYy59rG1a+PGmHSCNyPmXHzpe5vSBc4USQKGIpV6mIyOvKQyjmUt4ojwG/yg==
+  dependencies:
+    confusing-browser-globals "^1.0.9"
+    object.assign "^4.1.0"
+    object.entries "^1.1.1"
+
 "@istanbuljs/load-nyc-config@^1.0.0":
   version "1.1.0"
   resolved "https://registry.npmjs.org/@istanbuljs/load-nyc-config/-/load-nyc-config-1.1.0.tgz#fd3db1d59ecf7cf121e80650bb86712f9b55eced"
@@ -1687,15 +1696,6 @@
   version "1.1.2"
   resolved "https://registry.npmjs.org/@tootallnate/once/-/once-1.1.2.tgz#ccb91445360179a04e7fe6aff78c00ffc1eeaf82"
   integrity sha512-RbzJvlNzmRq5c3O09UipeuXno4tA1FE6ikOjxZK0tuxVv3412l64l5t1W5pj4+rJq9vpkm/kwiR07aZXnsKPxw==
-
-"@trbl/eslint-config@^1.2.4":
-  version "1.2.4"
-  resolved "https://registry.npmjs.org/@trbl/eslint-config/-/eslint-config-1.2.4.tgz#81206ed312d52057f2a58a594d9fc17877260e85"
-  integrity sha512-t2FX1LdJno9q+JYYTpLTUlGg5X9+1zjsUMvyo8KTdJBgPqIEYdLSEKl7YUkqDwSSLeWrFUPtfVYIuII6Us1dSg==
-  dependencies:
-    confusing-browser-globals "^1.0.9"
-    object.assign "^4.1.0"
-    object.entries "^1.1.1"
 
 "@trysound/sax@0.2.0":
   version "0.2.0"
