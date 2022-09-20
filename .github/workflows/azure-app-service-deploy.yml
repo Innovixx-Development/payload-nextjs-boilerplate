@@ -45,7 +45,7 @@ jobs:
 
       - name: npm install, build, and test
         run: |
-          yarn --production --frozen-lockfile --network-timeout 1000000000
+          yarn --production=false --frozen-lockfile --network-timeout 1000000000
           yarn build
 
       - name: zip artifact
@@ -62,12 +62,16 @@ jobs:
     needs: build
     environment:
       name: 'Production'
-      url: ${{ secrets.NEXT_PUBLIC_SERVER_URL }}
 
     steps:
       - name: Setup sshpass
         run: |
           sudo apt-get install -y sshpass
+
+      - name: Download artifact from build job
+        uses: actions/download-artifact@v2
+        with:
+          name: node-app
 
       - name: Unzip artifact
         run: unzip artifact.zip
@@ -77,13 +81,8 @@ jobs:
         with:
           creds: ${{ secrets.AZURE_CREDENTIALS }}
 
-      - name: Download artifact from build job
-        uses: actions/download-artifact@v2
-        with:
-          name: node-app
-
       - name: Deploy to Azure Web App
         run: |
-          az webapp create-remote-connection --subscription SUBSCRIPTION_ID -g RESOURCE_GROUP_NAME -n WEB_APP_NAME -p 5000 &
+          az webapp create-remote-connection --subscription ${{ secrets.AZURE_SUBSCRIPTION }} -g ${{ secrets.AZURE_RESOURCE_GROUP_NAME }} -n ${{ secrets.AZURE_WEBAPP_NAME }} -p 5000 &
           sleep 25
           ./deploy.sh --host localhost --user root --password Docker! --port 5000 --commit ${{ github.sha }}

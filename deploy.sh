@@ -124,5 +124,15 @@ ln -nfs $NODE_MODULES_DIR $APP_ROOT/node_modules
 echo "Linking static"
 ln -nfs $RELEASE_DIR/static $STATIC_DIR
 
+# purge old releases
+echo "Purging old releases"
+cd $RELEASES_DIR
+ls -t | tail -n +4 | xargs rm -rf
+
+# purge old deploys
+echo "Purging old deploys"
+cd $DEPLOYS_DIR
+ls -t | tail -n +4 | xargs rm -rf
+
 exit
 EOF
