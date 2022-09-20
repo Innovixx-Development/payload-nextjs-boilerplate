@@ -1,7 +1,6 @@
 import React from 'react';
-import classes from './index.module.css';
 import { Page } from '../../payload-types';
-import * as blocks from '../../blocks';
+import { components } from '../../blocks';
 
 type Props = {
   layout: Page['layout'];
@@ -9,20 +8,18 @@ type Props = {
 };
 
 export const RenderBlocks: React.FC<Props> = ({ layout, className }) => (
-  <div className={[classes.renderBlocks, className].filter(Boolean).join(' ')}>
+  <div className={className}>
     {layout.map((block, i) => {
       // make blockType first character uppercase
       const blockType = `${
         block.blockType.charAt(0).toUpperCase() + block.blockType.slice(1)
       }Component`;
-      const Block: React.FC<any> = blocks[blockType];
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      const Block: React.FC<any> = components[blockType];
 
       if (Block) {
         return (
-          <section
-            key={i}
-            className={classes.block}
-          >
+          <section key={i}>
             <Block {...block} />
           </section>
         );

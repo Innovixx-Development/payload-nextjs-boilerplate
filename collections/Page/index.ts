@@ -1,6 +1,6 @@
 import { CollectionConfig } from 'payload/types';
 import formatSlug from '../../utilities/formatSlug';
-import { Image, CallToAction, Content } from '../../blocks';
+import { Image, Content } from '../../blocks';
 
 export const Page: CollectionConfig = {
   slug: 'pages',
@@ -28,7 +28,7 @@ export const Page: CollectionConfig = {
       label: 'Page Layout',
       type: 'blocks',
       minRows: 1,
-      blocks: [CallToAction, Content, Image],
+      blocks: [Content, Image],
     },
     {
       name: 'meta',

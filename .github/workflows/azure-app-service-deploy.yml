@@ -12,6 +12,7 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    environment: Production
 
     steps:
       - uses: actions/checkout@v2
@@ -44,11 +45,11 @@ jobs:
 
       - name: npm install, build, and test
         run: |
-          yarn
+          yarn --production --frozen-lockfile --network-timeout 1000000000
           yarn build
 
       - name: zip artifact
-        run: zip -r artifact.zip .
+        run: zip -r artifact.zip . -x .git/\* .github/\* .vscode/\* .next/cache/\* node_modules/\*
 
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
@@ -61,19 +62,28 @@ jobs:
     needs: build
     environment:
       name: 'Production'
-      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+      url: ${{ secrets.NEXT_PUBLIC_SERVER_URL }}
 
     steps:
+      - name: Setup sshpass
+        run: |
+          sudo apt-get install -y sshpass
+
+      - name: Unzip artifact
+        run: unzip artifact.zip
+
+      - name: 'Azure CLI Login'
+        uses: azure/login@v1
+        with:
+          creds: ${{ secrets.AZURE_CREDENTIALS }}
+
       - name: Download artifact from build job
         uses: actions/download-artifact@v2
         with:
           name: node-app
 
-      - name: 'Deploy to Azure Web App'
-        id: deploy-to-webapp
-        uses: azure/webapps-deploy@v2
-        with:
-          app-name: ${{ secrets.AZUREAPPSERVICE_NAME }}
-          slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE }}
-          package: ./artifact.zip
+      - name: Deploy to Azure Web App
+        run: |
+          az webapp create-remote-connection --subscription SUBSCRIPTION_ID -g RESOURCE_GROUP_NAME -n WEB_APP_NAME -p 5000 &
+          sleep 25
+          ./deploy.sh --host localhost --user root --password Docker! --port 5000 --commit ${{ github.sha }}

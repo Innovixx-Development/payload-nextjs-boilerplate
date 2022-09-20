@@ -19,8 +19,7 @@ export const Media: CollectionConfig = {
         height: 576,
       },
     ],
-    staticDir:
-      process.env.NODE_ENV === 'production' ? '../static/media' : 'media',
+    staticDir: './static/media',
   },
   fields: [
     {

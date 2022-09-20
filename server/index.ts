@@ -14,11 +14,15 @@ dotenv({
 const dev = process.env.NODE_ENV !== 'production';
 const server = express();
 
-payload.init({
-  secret: process.env.PAYLOAD_SECRET_KEY,
-  mongoURL: process.env.MONGO_URL,
-  express: server,
-});
+try {
+  payload.init({
+    secret: process.env.PAYLOAD_SECRET_KEY,
+    mongoURL: process.env.MONGO_URL,
+    express: server,
+  });
+} catch (err) {
+  throw new Error(err);
+}
 
 if (!process.env.NEXT_BUILD) {
   const nextApp = next({ dev });

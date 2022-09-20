@@ -76,33 +76,6 @@
           ]
         }
       ]
-    },
-    {
-      "blockType": "cta",
-      "blockName": "Calls to Action",
-      "content": [
-        {
-          "children": [
-            {
-              "text": "Here is a Call to Action block"
-            }
-          ],
-          "type": "h4"
-        }
-      ],
-      "buttons": [
-        {
-          "type": "custom",
-          "label": "Click me",
-          "url": "https://payloadcms.com",
-          "newTab": true
-        },
-        {
-          "type": "page",
-          "label": "Don't click me",
-          "page": "{{SAMPLE_PAGE_ID}}"
-        }
-      ]
     }
   ],
   "title": "Home",
