@@ -1,6 +1,6 @@
 import { buildConfig } from 'payload/config';
 import dotenv from 'dotenv';
-import { Media, Page } from './src/cms/collections';
+import { Media, Page } from './cms/collections';
 
 dotenv.config();
 

@@ -37,6 +37,7 @@ const createHomePage = async () => {
     data: JSON.parse(homeString),
   });
 
+  // eslint-disable-next-line no-console
   console.log('Seed completed!');
   process.exit(0);
 };

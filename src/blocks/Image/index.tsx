@@ -22,15 +22,8 @@ export const ImageComponent: React.FC<Props> = ({
   caption,
 }) => {
   if (typeof image === 'object') {
-    let filenameToRender = image.filename;
-    let { width } = image;
-    let { height } = image;
 
-    if (image.sizes[type]) {
-      filenameToRender = image.sizes[type];
-      width = image.sizes[type].width;
-      height = image.sizes[type].height;
-    }
+    const selectedImageSize = type === 'normal' ? image.sizes.card : image.sizes.feature;
 
     const sizesToUse = sizes
       .map((size) => `(max-width: ${size}px) ${size}px`)
@@ -39,11 +32,11 @@ export const ImageComponent: React.FC<Props> = ({
     return (
       <div className={`${styles.wrap} ${styles[type]}`}>
         <NextImage
-          src={`${process.env.NEXT_PUBLIC_SERVER_URL}/media/${filenameToRender}`}
+          src={selectedImageSize.url}
           alt={image.alt}
           sizes={sizesToUse}
-          width={width}
-          height={height}
+          width={selectedImageSize.width}
+          height={selectedImageSize.height}
         />
         {caption && (
         <RichText

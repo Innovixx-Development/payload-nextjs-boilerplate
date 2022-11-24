@@ -3,3 +3,8 @@
   margin: 0 auto;
   padding: 0 var(--baseline);
 }
+
+.wrap img {
+  width: 100%;
+  height: auto;
+}
