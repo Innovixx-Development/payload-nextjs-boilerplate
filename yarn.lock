@@ -1361,12 +1361,12 @@
     gud "^1.0.0"
     warning "^4.0.3"
 
-"@innovixx/eslint-config@1.0.8":
-  version "1.0.8"
-  resolved "https://registry.yarnpkg.com/@innovixx/eslint-config/-/eslint-config-1.0.8.tgz#6887bb88752ea79cc620602bae5699d6c19e94cd"
-  integrity sha512-9386pgRjzA4AdJ8wmQsZG/p1OGTZrw+QWX/9wgATykY8lsXbOBknlECJORmLeCnLQ2euRS5QzYV06fjPEij+FA==
+"@innovixx/eslint-config@1.0.11":
+  version "1.0.11"
+  resolved "https://registry.yarnpkg.com/@innovixx/eslint-config/-/eslint-config-1.0.11.tgz#26de0ee3541dd5c1f1e9e57e91a96be16255411e"
+  integrity sha512-xyFI/wyTfYhZv2XBcZcnn2F3MGim0dfyzXxaE4kED68JlpRtF7XJjUIeajC9EVMlMcss+V5RF/589F+j0w5NkA==
   dependencies:
-    confusing-browser-globals "^1.0.9"
+    confusing-browser-globals "^1.0.10"
     object.assign "^4.1.0"
     object.entries "^1.1.1"
 
@@ -3279,7 +3279,7 @@ conf@^10.1.2:
     pkg-up "^3.1.0"
     semver "^7.3.5"
 
-confusing-browser-globals@^1.0.9:
+confusing-browser-globals@^1.0.10:
   version "1.0.11"
   resolved "https://registry.yarnpkg.com/confusing-browser-globals/-/confusing-browser-globals-1.0.11.tgz#ae40e9b57cdd3915408a2805ebd3a5585608dc81"
   integrity sha512-JsPKdmh8ZkmnHxDk55FZ1TqVLvEQTvoByJZRN9jzI0UjxK/QgAmsphz7PGtqgPieQZ/CQcHWXCR7ATDNhGe+YA==

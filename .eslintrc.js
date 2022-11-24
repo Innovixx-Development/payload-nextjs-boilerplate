@@ -40,4 +40,5 @@ module.exports = {
       },
     },
   ],
+  ignorePatterns: ['payload-types.ts'],
 };

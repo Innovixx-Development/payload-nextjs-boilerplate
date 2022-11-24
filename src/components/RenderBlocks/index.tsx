@@ -1,6 +1,6 @@
 import React from 'react';
 import * as components from '../../blocks';
-import { Page } from '../../payload-types';
+import { Page } from '../../../payload-types';
 
 type Props = {
   layout: Page['layout'];

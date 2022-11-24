@@ -4,7 +4,7 @@ import { GetServerSideProps } from 'next';
 import getConfig from 'next/config';
 import { NotFound, Head, RenderBlocks } from '../components';
 import classes from '../styles/page.module.css';
-import { Page } from '../payload-types';
+import { Page } from '../../payload-types';
 
 const {
   publicRuntimeConfig: { SERVER_URL },

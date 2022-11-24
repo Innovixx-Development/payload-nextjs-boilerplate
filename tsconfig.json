@@ -24,8 +24,5 @@
     "**/*.tsx",
     "./src/blocks/Image/sizes.js"
   ],
-  "exclude": ["node_modules"],
-  "paths": {
-    "react": ["./node_modules/@types/react"]
-  }
+  "exclude": ["node_modules"]
 }

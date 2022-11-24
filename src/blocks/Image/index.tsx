@@ -3,7 +3,7 @@ import NextImage from 'next/image';
 import { RichText } from '../../components';
 import styles from './index.module.css';
 import { sizes } from './sizes';
-import { Media } from '../../payload-types';
+import { Media } from '../../../payload-types';
 
 interface Props {
   image: string | Media;
@@ -22,7 +22,6 @@ export const ImageComponent: React.FC<Props> = ({
   caption,
 }) => {
   if (typeof image === 'object') {
-
     const selectedImageSize = type === 'normal' ? image.sizes.card : image.sizes.feature;
 
     const sizesToUse = sizes
