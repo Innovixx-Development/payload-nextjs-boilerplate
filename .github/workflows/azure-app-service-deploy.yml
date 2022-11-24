@@ -39,7 +39,6 @@ jobs:
           echo "PAYLOAD_SECRET_KEY=${{ secrets.PAYLOAD_SECRET_KEY }}" > .env
           echo "MONGO_URL=${{ secrets.MONGO_URL }}" >> .env
           echo "NEXT_PUBLIC_SERVER_URL=${{ secrets.NEXT_PUBLIC_SERVER_URL }}" >> .env
-          echo "PAYLOAD_PUBLIC_SERVER_URL=${{ secrets.PAYLOAD_PUBLIC_SERVER_URL }}" >> .env
           echo "PORT=${{ secrets.PORT }}" >> .env
           echo "NODE_ENV=${{ secrets.NODE_ENV }}" >> .env
 
