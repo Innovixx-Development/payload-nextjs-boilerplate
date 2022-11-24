@@ -1,12 +1,12 @@
-require('@babel/register')({
-  presets: ['next/babel'],
-  extensions: ['.ts', '.tsx', '.js', '.jsx'],
+require("@babel/register")({
+  presets: ["next/babel"],
+  extensions: [".ts", ".tsx", ".js", ".jsx"],
   env: {
     development: {
-      sourceMaps: 'inline',
+      sourceMaps: "inline",
       retainLines: true,
     },
   },
 });
 
-require('./server');
+require("./src/server");

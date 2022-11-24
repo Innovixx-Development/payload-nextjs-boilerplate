@@ -19,7 +19,7 @@
     "seed": "node seed/index.js",
     "serve": "cross-env NODE_ENV=production node dist/index.js",
     "generate:types": "cross-env PAYLOAD_CONFIG_PATH=payload.config.ts payload generate:types",
-    "generate:graphQLSchema": "PAYLOAD_CONFIG_PATH=payload.config.ts payload generate:graphQLSchema"
+    "generate:graphQLSchema": "cross-env PAYLOAD_CONFIG_PATH=payload.config.ts payload generate:graphQLSchema"
   },
   "dependencies": {
     "dotenv": "^16.0.0",
