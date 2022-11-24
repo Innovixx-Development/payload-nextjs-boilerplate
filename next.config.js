@@ -7,8 +7,7 @@ module.exports = {
   },
   images: {
     domains: [
-      "localhost",
-      // Your domain(s) here
+      process.env.NEXT_LOCAL_DOMAIN
     ],
     deviceSizes: sizes,
   },
