@@ -4,5 +4,5 @@ node_modules
 out
 build
 dist
-static/*
+storage/*
 yarn-error.log
