@@ -16,7 +16,8 @@
     "build:payload": "payload build",
     "build": "cross-env NODE_ENV=production yarn build:payload && yarn build:server && cross-env NEXT_BUILD=true node dist/index.js",
     "dev": "node dev.js",
-    "seed": "node ./cms/seed/index.js",
+    "cleanDev": "rm -rf ./storage && cross-env PAYLOAD_DROP_DATABASE=true PAYLOAD_SEED_DATABASE=true yarn dev",
+    "seed": "rm -rf ./storage && cross-env PAYLOAD_SEED_DATABASE=true yarn dev",
     "serve": "cross-env NODE_ENV=production node dist/index.js",
     "generate:types": "cross-env PAYLOAD_CONFIG_PATH=payload.config.ts payload generate:types",
     "generate:graphQLSchema": "cross-env PAYLOAD_CONFIG_PATH=payload.config.ts payload generate:graphQLSchema"
@@ -26,7 +27,7 @@
     "escape-html": "^1.0.3",
     "express": "^4.17.1",
     "next": "^13.0.5",
-    "payload": "^1.2.1",
+    "payload": "^1.5.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "slate": "^0.72.8"

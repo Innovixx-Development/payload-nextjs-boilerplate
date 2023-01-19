@@ -1,5 +1,5 @@
-require("dotenv").config();
-const { sizes } = require("./src/blocks/Image/sizes");
+require('dotenv').config();
+const { sizes } = require('./src/blocks/Image/sizes');
 
 module.exports = {
   publicRuntimeConfig: {
@@ -7,7 +7,7 @@ module.exports = {
   },
   images: {
     domains: [
-      process.env.NEXT_LOCAL_DOMAIN
+      process.env.NEXT_LOCAL_DOMAIN,
     ],
     deviceSizes: sizes,
   },

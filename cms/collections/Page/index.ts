@@ -3,7 +3,7 @@ import formatSlug from '../../utilities/formatSlug';
 import { Image, Content } from '../../blocks';
 
 export const Page: CollectionConfig = {
-  slug: 'pages',
+  slug: 'page',
   admin: {
     useAsTitle: 'title',
   },

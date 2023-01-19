@@ -19,7 +19,7 @@ export const Media: CollectionConfig = {
         height: 576,
       },
     ],
-    staticDir: './static/media',
+    staticDir: './storage/media',
   },
   fields: [
     {
