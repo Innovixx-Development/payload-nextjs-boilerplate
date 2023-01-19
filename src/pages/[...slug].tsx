@@ -1,14 +1,10 @@
 import React from 'react';
-import payload from 'payload';
 import { GetServerSideProps } from 'next';
-import getConfig from 'next/config';
+import Image from 'next/image';
 import { NotFound, Head, RenderBlocks } from '../components';
 import classes from '../styles/page.module.css';
 import { Page } from '../../payload-types';
-
-const {
-  publicRuntimeConfig: { SERVER_URL },
-} = getConfig();
+import { fetchPage } from '../graphql/query';
 
 export type Props = {
   page?: Page;
@@ -34,11 +30,11 @@ const Page: React.FC<Props> = (props) => {
       </header>
       <div className={classes.featuredImage}>
         {page.image && typeof page.image === 'object' && (
-          <img
-            src={`${SERVER_URL}/media/${
-              page.image.sizes?.feature?.filename || page.image.filename
-            }`}
+          <Image
+            src={page.image.sizes.feature.url || page.image.url}
             alt={page.image.alt}
+            width={page.image.sizes.feature.width || page.image.width}
+            height={page.image.sizes.feature.height || page.image.height}
           />
         )}
       </div>
@@ -66,16 +62,9 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
     ? (ctx.params.slug as string[]).join('/')
     : 'home';
 
-  const pageQuery = await payload.find({
-    collection: 'page',
-    where: {
-      slug: {
-        equals: slug,
-      },
-    },
-  });
+  const { page } = await fetchPage(slug);
 
-  if (!pageQuery.docs[0]) {
+  if (!page) {
     ctx.res.statusCode = 404;
 
     return {
@@ -85,7 +74,7 @@ export const getServerSideProps: GetServerSideProps = async (ctx) => {
 
   return {
     props: {
-      page: pageQuery.docs[0],
+      page,
     },
   };
 };

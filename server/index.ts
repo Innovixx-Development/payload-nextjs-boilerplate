@@ -33,6 +33,13 @@ if (!process.env.NEXT_BUILD) {
 
   const nextHandler = nextApp.getRequestHandler();
 
+  if (dev) {
+    server.get('/sandbox', (_, res) => {
+      res.sendFile(path.join(__dirname, './sandbox.html'));
+    });
+  }
+
+
   server.get('*', (req, res) => nextHandler(req, res));
 
   nextApp.prepare().then(() => {
