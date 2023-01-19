@@ -26,10 +26,13 @@
     "dotenv": "^8.2.0",
     "escape-html": "^1.0.3",
     "express": "^4.17.1",
+    "jss": "^10.9.2",
+    "jss-global": "^3.0.0",
     "next": "^13.0.5",
     "payload": "^1.5.9",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-jss": "^10.9.2",
     "slate": "^0.72.8"
   },
   "devDependencies": {

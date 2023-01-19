@@ -1,7 +1,6 @@
 import React from 'react';
 import NextImage from 'next/image';
 import { RichText } from '../../components';
-import styles from './index.module.css';
 import { sizes } from './sizes';
 import { Media } from '../../../payload-types';
 
@@ -29,7 +28,7 @@ export const ImageComponent: React.FC<Props> = ({
       .join(', ');
 
     return (
-      <div className={`${styles.wrap} ${styles[type]}`}>
+      <div>
         <NextImage
           src={selectedImageSize.url}
           alt={image.alt}
@@ -39,7 +38,6 @@ export const ImageComponent: React.FC<Props> = ({
         />
         {caption && (
         <RichText
-          className={styles.caption}
           content={caption}
         />
         )}

@@ -7,8 +7,14 @@ module.exports = {
   },
   images: {
     domains: [
-      process.env.NEXT_LOCAL_DOMAIN,
+      '127.0.0.1',
+      'localhost',
     ],
     deviceSizes: sizes,
+  },
+  pageExtensions: ['tsx', 'js'],
+  i18n: {
+    locales: ['en'],
+    defaultLocale: 'en',
   },
 };

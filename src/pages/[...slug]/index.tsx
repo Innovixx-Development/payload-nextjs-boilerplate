@@ -1,10 +1,10 @@
 import React from 'react';
 import { GetServerSideProps } from 'next';
 import Image from 'next/image';
-import { NotFound, Head, RenderBlocks } from '../components';
-import classes from '../styles/page.module.css';
-import { Page } from '../../payload-types';
-import { fetchPage } from '../graphql/query';
+import { NotFound, Head, RenderBlocks } from '../../components';
+import { Page } from '../../../payload-types';
+import { fetchPage } from '../../graphql/query';
+import { pageStyles } from './styles';
 
 export type Props = {
   page?: Page;
@@ -13,22 +13,23 @@ export type Props = {
 
 const Page: React.FC<Props> = (props) => {
   const { page } = props;
+  const styles = pageStyles();
 
   if (!page) {
     return <NotFound />;
   }
 
   return (
-    <main className={classes.page}>
+    <main className={styles.container}>
       <Head
         title={page.meta?.title || page.title}
         description={page.meta?.description}
         keywords={page.meta?.keywords}
       />
-      <header className={classes.header}>
+      <header>
         <h1>{page.title}</h1>
       </header>
-      <div className={classes.featuredImage}>
+      <div>
         {page.image && typeof page.image === 'object' && (
           <Image
             src={page.image.sizes.feature.url || page.image.url}
@@ -39,7 +40,7 @@ const Page: React.FC<Props> = (props) => {
         )}
       </div>
       <RenderBlocks layout={page.layout} />
-      <footer className={classes.footer}>
+      <footer>
         <hr />
         NextJS + Payload Server Boilerplate made by
         {' '}

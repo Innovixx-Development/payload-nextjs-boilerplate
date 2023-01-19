@@ -1,6 +1,5 @@
 import React from 'react';
 import { RichText } from '../../components';
-import styles from './index.module.css';
 
 interface Props {
   content?: {
@@ -9,10 +8,9 @@ interface Props {
 }
 
 export const ContentComponent: React.FC<Props> = ({ content }) => (
-  <div className={styles.wrap}>
+  <div>
     <RichText
       content={content}
-      className={styles.content}
     />
   </div>
 );
