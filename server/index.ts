@@ -15,15 +15,19 @@ const server = express();
 
 try {
   if (!process.env.PAYLOAD_SECRET_KEY || !process.env.MONGO_URL) {
-    console.log('Payload secret key or Mongo URL not found. Please check your .env file.');
+    console.log(
+      'Payload secret key or Mongo URL not found. Please check your .env file.',
+    );
   }
 } catch (error) {
-  console.log('Payload secret key or Mongo URL not found. Please check your .env file.');
+  console.log(
+    'Payload secret key or Mongo URL not found. Please check your .env file.',
+  );
 }
 
 const start = async () => {
   try {
-    payload.init({
+    await payload.init({
       secret: process.env.PAYLOAD_SECRET_KEY,
       mongoURL: process.env.MONGO_URL,
       express: server,
@@ -42,7 +46,6 @@ const start = async () => {
         res.sendFile(path.join(__dirname, './sandbox.html'));
       });
     }
-
 
     server.get('*', (req, res) => nextHandler(req, res));
 
