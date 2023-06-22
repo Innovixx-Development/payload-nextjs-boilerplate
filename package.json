@@ -14,19 +14,21 @@
     "build:next": "next build",
     "build:server": "tsc --project tsconfig.server.json",
     "build:payload": "payload build",
-    "build": "cross-env NODE_ENV=production yarn build:payload && yarn build:server && cross-env NEXT_BUILD=true node dist/index.js",
+    "build": "yarn copyfiles && cross-env NODE_ENV=production yarn build:payload && yarn build:server && cross-env NEXT_BUILD=true node dist/index.js",
     "dev": "node dev.js",
     "cleanDev": "rm -rf ./storage && cross-env PAYLOAD_DROP_DATABASE=true PAYLOAD_SEED_DATABASE=true yarn dev",
     "seed": "rm -rf ./storage && cross-env PAYLOAD_SEED_DATABASE=true yarn dev",
     "serve": "cross-env NODE_ENV=production node dist/index.js",
     "generate:types": "cross-env PAYLOAD_CONFIG_PATH=payload.config.ts payload generate:types",
-    "generate:graphQLSchema": "cross-env PAYLOAD_CONFIG_PATH=payload.config.ts payload generate:graphQLSchema"
+    "generate:graphQLSchema": "cross-env PAYLOAD_CONFIG_PATH=payload.config.ts payload generate:graphQLSchema",
+    "copyfiles": "copyfiles -u 1 \"cms/**/*.{html,css,scss,ttf,woff,woff2,eot,svg,jpg,png}\" dist/cms"
   },
   "dependencies": {
+    "copyfiles": "^2.4.1",
     "dotenv": "^8.2.0",
     "escape-html": "^1.0.3",
     "express": "^4.17.1",
-    "jss": "^10.9.2",
+    "jss": "^10.10.0",
     "jss-global": "^3.0.0",
     "next": "^13.0.5",
     "payload": "^1.6.3",
@@ -38,7 +40,7 @@
   "devDependencies": {
     "@babel/core": "^7.20.12",
     "@babel/register": "^7.17.0",
-    "@innovixx/eslint-config": "1.0.11",
+    "@innovixx/eslint-config": "^1.1.0",
     "@types/express": "^4.17.11",
     "@types/node": "^18.7.18",
     "@types/react": "^16.9.56",

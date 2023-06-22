@@ -3,7 +3,11 @@
   "compilerOptions": {
     "module": "commonjs",
     "outDir": "dist",
-    "noEmit": false
+    "noEmit": false,
+    "jsx": "react",
   },
-  "include": ["./server"]
+  "include": [
+    "server.ts",
+    "payload.config.ts",
+  ]
 }
