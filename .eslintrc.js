@@ -7,7 +7,11 @@ module.exports = {
       jsx: true,
     },
   },
-  extends: ['@innovixx', 'plugin:@typescript-eslint/recommended'],
+  extends: [
+    '@innovixx/eslint-config/configs/base',
+    '@innovixx/eslint-config/configs/react',
+    'plugin:@typescript-eslint/recommended',
+  ],
   settings: {
     'import/resolver': {
       node: {

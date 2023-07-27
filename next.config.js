@@ -7,8 +7,7 @@ module.exports = {
   },
   images: {
     domains: [
-      '127.0.0.1',
-      'localhost',
+      new URL(process.env.NEXT_PUBLIC_SERVER_URL).hostname,
     ],
     deviceSizes: sizes,
   },

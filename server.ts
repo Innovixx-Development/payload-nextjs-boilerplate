@@ -6,20 +6,12 @@ import express from 'express';
 import payload from 'payload';
 import { config as dotenv } from 'dotenv';
 
-dotenv({
-  path: path.resolve(__dirname, '../.env'),
-});
+dotenv();
 
 const dev = process.env.NODE_ENV !== 'production';
 const server = express();
 
-try {
-  if (!process.env.PAYLOAD_SECRET_KEY || !process.env.MONGO_URL) {
-    console.log(
-      'Payload secret key or Mongo URL not found. Please check your .env file.',
-    );
-  }
-} catch (error) {
+if (!process.env.PAYLOAD_SECRET_KEY || !process.env.MONGO_URL) {
   console.log(
     'Payload secret key or Mongo URL not found. Please check your .env file.',
   );
@@ -31,9 +23,25 @@ const start = async () => {
       secret: process.env.PAYLOAD_SECRET_KEY,
       mongoURL: process.env.MONGO_URL,
       express: server,
+      ...(
+        process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS && {
+          email: {
+            transportOptions: {
+              host: process.env.SMTP_HOST,
+              auth: {
+                user: process.env.SMTP_USER,
+                pass: process.env.SMTP_PASS,
+              },
+              port: process.env.SMTP_PORT || 587,
+            },
+            fromName: 'Payload CMS',
+            fromAddress: process.env.FROM_EMAIL || 'service@innovixx.co.uk',
+          },
+        }
+      ),
     });
   } catch (err) {
-    throw new Error(err);
+    console.log(err);
   }
 
   if (!process.env.NEXT_BUILD) {
@@ -43,7 +51,7 @@ const start = async () => {
 
     if (dev) {
       server.get('/sandbox', (_, res) => {
-        res.sendFile(path.join(__dirname, './sandbox.html'));
+        res.sendFile(path.join(__dirname, './server/sandbox.html'));
       });
     }
 
@@ -59,7 +67,7 @@ const start = async () => {
   } else {
     server.listen(process.env.PORT, async () => {
       console.log('NextJS is now building...');
-      await nextBuild(path.join(__dirname, '../'));
+      await nextBuild(process.cwd());
       process.exit();
     });
   }

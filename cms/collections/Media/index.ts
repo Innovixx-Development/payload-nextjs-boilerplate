@@ -1,3 +1,4 @@
+import path from 'path';
 import { CollectionConfig } from 'payload/types';
 
 export const Media: CollectionConfig = {
@@ -19,7 +20,7 @@ export const Media: CollectionConfig = {
         height: 576,
       },
     ],
-    staticDir: './storage/media',
+    staticDir: path.join(process.cwd(), 'storage', 'media'),
   },
   fields: [
     {

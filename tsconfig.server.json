@@ -4,10 +4,7 @@
     "module": "commonjs",
     "outDir": "dist",
     "noEmit": false,
-    "jsx": "react",
+    "jsx": "react"
   },
-  "include": [
-    "server.ts",
-    "payload.config.ts",
-  ]
+  "include": ["server.ts", "payload.config.ts"]
 }
