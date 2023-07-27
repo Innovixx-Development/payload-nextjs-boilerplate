@@ -1,5 +1,7 @@
 # Payload + NextJS Server-Rendered TypeScript Boilerplate
 
+This project was originally a fork of an official Payload and has since been moved to the [examples directory in the official payload repo](https://github.com/payloadcms/payload/tree/master/examples/custom-server)
+
 This repo contains a boilerplate that'll get you going on a Payload install combined with a NextJS frontend.
 
 When you use Payload, you plug it into _**your**_ Express server. That's a fundamental difference between Payload and other CMS / application frameworks. It means that when you use Payload, you're adding Payload to your app, and not building a "Payload app".
@@ -46,7 +48,3 @@ This repo contains everything you need to both build your project for production
 
 - To build, run `yarn build` or `npm run build`.
 - To serve, run `yarn serve` or `npm run serve`.
-
-### This boilerplate is not for all NextJS projects
-
-We will be releasing more boilerplates over time, including one for pairing Payload with a statically generated NextJS site. If you don't need NextJS' server rendering, you should go fully static.
