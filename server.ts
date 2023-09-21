@@ -67,7 +67,7 @@ const start = async () => {
   } else {
     server.listen(process.env.PORT, async () => {
       console.log('NextJS is now building...');
-      await nextBuild(process.cwd());
+      await nextBuild(process.cwd(), false, true, true, false, false, false, null, 'default');
       process.exit();
     });
   }
