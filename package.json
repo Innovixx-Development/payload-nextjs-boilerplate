@@ -24,6 +24,9 @@
     "copyfiles": "copyfiles -u 1 \"cms/**/*.{html,css,scss,ttf,woff,woff2,eot,svg,jpg,png}\" dist/cms"
   },
   "dependencies": {
+    "@payloadcms/bundler-webpack": "^1.0.0",
+    "@payloadcms/db-mongodb": "^1.0.1",
+    "@payloadcms/richtext-lexical": "^0.1.4",
     "copyfiles": "^2.4.1",
     "dotenv": "^16.3.1",
     "escape-html": "^1.0.3",
@@ -31,7 +34,7 @@
     "jss": "^9.0.0",
     "jss-global": "^3.0.0",
     "next": "^13.4.19",
-    "payload": "^1.15.6",
+    "payload": "^2.0.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-jss": "^10.10.0",
