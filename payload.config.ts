@@ -2,6 +2,7 @@ import { buildConfig } from 'payload/config';
 import { mongooseAdapter } from '@payloadcms/db-mongodb';
 import { webpackBundler } from '@payloadcms/bundler-webpack';
 import { lexicalEditor } from '@payloadcms/richtext-lexical';
+import path from 'path';
 import { Media, Page, User } from './cms/collections';
 import { seed } from './cms/seed';
 
@@ -11,6 +12,7 @@ export default buildConfig({
   admin: {
     user: User.slug,
     bundler: webpackBundler(),
+    css: path.resolve(__dirname, '/cms/styles/custom.scss'),
   },
 
   routes: {
