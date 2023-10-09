@@ -1403,7 +1403,7 @@
   dependencies:
     "@lexical/utils" "0.12.2"
 
-"@lexical/list@0.12.2":
+"@lexical/list@0.12.2", "@lexical/list@^0.12.2":
   version "0.12.2"
   resolved "https://registry.yarnpkg.com/@lexical/list/-/list-0.12.2.tgz#7afdd13026f936144ff93d40382f21924e8e6908"
   integrity sha512-3CyWtYQC+IlK4cK/oiD8Uz1gSXD8UcKGOF2vVsDXkMU06O6zvHNmHZOnVJqA0JVNgZAoR9dMR1fi2xd4iuCAiw==
@@ -1468,7 +1468,7 @@
     "@lexical/yjs" "0.12.2"
     react-error-boundary "^3.1.4"
 
-"@lexical/rich-text@0.12.2":
+"@lexical/rich-text@0.12.2", "@lexical/rich-text@^0.12.2":
   version "0.12.2"
   resolved "https://registry.yarnpkg.com/@lexical/rich-text/-/rich-text-0.12.2.tgz#9ef44e54777fc222ac8df344adb0d7428c784b25"
   integrity sha512-igsEuv7CwBOAj5c8jeE41cnx6zkhI/Bkbu4W7shT6S6lNA/3cnyZpAMlgixwyK5RoqjGRCT+IJK5l6yBxQfNkw==
@@ -5864,7 +5864,7 @@ levn@^0.4.1:
     prelude-ls "^1.2.1"
     type-check "~0.4.0"
 
-lexical@0.12.2:
+lexical@0.12.2, lexical@^0.12.2:
   version "0.12.2"
   resolved "https://registry.yarnpkg.com/lexical/-/lexical-0.12.2.tgz#68535e145715d5788374495c9ee0420e417d792b"
   integrity sha512-Kxavd+ETjxtVwG/hvPd6WZfXD44sLOKe9Vlkwxy7lBQ1qZArS+rZfs+u5iXwXe6tX9f2PIM0u3RHsrCEDDE0fw==

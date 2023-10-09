@@ -1,3 +1,4 @@
+import { lexicalEditor } from '@payloadcms/richtext-lexical';
 import { Block } from 'payload/types';
 
 export const Image: Block = {
@@ -41,6 +42,11 @@ export const Image: Block = {
       name: 'caption',
       label: 'Caption',
       type: 'richText',
+      editor: lexicalEditor({
+        features: ({ defaultFeatures }) => [
+          ...defaultFeatures.filter((feature) => !['checkList', 'relationship', 'upload'].includes(feature.key)),
+        ],
+      }),
     },
   ],
 };
