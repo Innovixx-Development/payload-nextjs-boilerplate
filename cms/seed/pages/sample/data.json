@@ -3,37 +3,36 @@
     {
       "blockType": "content",
       "blockName": "Page Content",
-      "content": [
-        {
+      "content": {
+        "root": {
+          "type": "root",
+          "format": "",
+          "indent": 0,
+          "version": 1,
           "children": [
             {
-              "text": "This is a sample page. Blah blah blah."
-            }
-          ],
-          "type": "h3"
-        },
-        {
-          "children": [
-            {
-              "text": ""
-            },
-            {
-              "type": "link",
-              "url": "/",
-              "newTab": false,
               "children": [
-                {
-                  "text": "Go back home"
-                }
-              ]
-            },
-            {
-              "text": ""
+                  {
+                      "detail": 0,
+                      "format": 0,
+                      "mode": "normal",
+                      "style": "",
+                      "text": "This is a sample page. Blah blah blah.",
+                      "type": "text",
+                      "version": 1
+                  }
+              ],
+              "direction": "ltr",
+              "format": "",
+              "indent": 0,
+              "type": "heading",
+              "version": 1,
+              "tag": "h3"
             }
           ],
-          "type": "p"
+          "direction": "ltr"
         }
-      ]
+      }
     }
   ],
   "title": "Sample Page",
