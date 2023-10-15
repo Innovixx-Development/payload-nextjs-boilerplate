@@ -24,11 +24,14 @@
     "copyfiles": "copyfiles -u 1 \"cms/**/*.{html,css,scss,ttf,woff,woff2,eot,svg,jpg,png}\" dist/cms"
   },
   "dependencies": {
+    "@lexical/clipboard": "0.12.2",
     "@lexical/list": "^0.12.2",
     "@lexical/rich-text": "^0.12.2",
-    "@payloadcms/bundler-webpack": "^1.0.0",
-    "@payloadcms/db-mongodb": "^1.0.1",
-    "@payloadcms/richtext-lexical": "^0.1.4",
+    "@lexical/selection": "0.12.2",
+    "@lexical/utils": "0.12.2",
+    "@payloadcms/bundler-webpack": "^1.0.3",
+    "@payloadcms/db-mongodb": "^1.0.3",
+    "@payloadcms/richtext-lexical": "^0.1.11",
     "copyfiles": "^2.4.1",
     "dotenv": "^16.3.1",
     "escape-html": "^1.0.3",
@@ -36,12 +39,11 @@
     "jss": "^9.0.0",
     "jss-global": "^3.0.0",
     "lexical": "^0.12.2",
-    "next": "^13.4.19",
-    "payload": "^2.0.2",
+    "next": "^13.5.4",
+    "payload": "^2.0.6",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-jss": "^10.10.0",
-    "slate": "^0.72.8"
+    "react-jss": "^10.10.0"
   },
   "devDependencies": {
     "@babel/core": "^7.20.12",
