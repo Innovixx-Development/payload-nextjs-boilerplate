@@ -1,12 +1,31 @@
-import dotenv from 'dotenv';
 import { buildConfig } from 'payload/config';
+import { mongooseAdapter } from '@payloadcms/db-mongodb';
+import { webpackBundler } from '@payloadcms/bundler-webpack';
+import { lexicalEditor } from '@payloadcms/richtext-lexical';
+import path from 'path';
 import { Media, Page, User } from './cms/collections';
 import { seed } from './cms/seed';
 
-dotenv.config();
-
 export default buildConfig({
   serverURL: process.env.NEXT_PUBLIC_SERVER_URL,
+
+  admin: {
+    user: User.slug,
+    bundler: webpackBundler(),
+    css: path.resolve(__dirname, '/cms/styles/custom.scss'),
+  },
+
+  routes: {
+    admin: '/admin',
+  },
+
+  db: mongooseAdapter({
+    url: process.env.MONGO_URL,
+  }),
+  indexSortableFields: true,
+
+  editor: lexicalEditor({}),
+
   collections: [Page, Media, User],
 
   onInit: async (payload) => {
@@ -17,6 +36,4 @@ export default buildConfig({
       await seed(payload);
     }
   },
-
-  indexSortableFields: true,
 });

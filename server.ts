@@ -21,7 +21,6 @@ const start = async () => {
   try {
     await payload.init({
       secret: process.env.PAYLOAD_SECRET_KEY,
-      mongoURL: process.env.MONGO_URL,
       express: server,
       ...(
         process.env.SMTP_HOST && process.env.SMTP_USER && process.env.SMTP_PASS && {

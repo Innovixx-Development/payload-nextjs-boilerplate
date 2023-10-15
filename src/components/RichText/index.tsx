@@ -1,14 +1,14 @@
 import React from 'react';
-import serialize from './serialize';
+import { serializeLexical } from './serialize';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
 export const RichText: React.FC<{ className?: string; content: any }> = ({
   className,
   content,
 }) => {
-  if (!content) {
+  if (!content?.root?.children) {
     return null;
   }
 
-  return <div className={className}>{serialize(content)}</div>;
+  return <div className={className}>{serializeLexical({ nodes: content?.root?.children })}</div>;
 };

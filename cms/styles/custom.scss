@@ -1,0 +1,26 @@
+:root {
+  // reduce nav width size
+  --nav-width: 225px !important;
+}
+
+.collection-default-edit--has-sidebar {
+  .collection-default-edit__main {
+    // increase main width size
+    width: 78% !important;
+  }
+
+  .collection-default-edit__sidebar-fields {
+    // decreate content left and right padding
+    padding-left: base(1);
+    padding-right: base(1);
+  }
+}
+
+[dir=ltr]  {
+  .collection-default-edit--has-sidebar {
+    .collection-default-edit__edit {
+      // make left and right padding equal
+      padding-right: var(--gutter-h);
+    }
+  }
+}
