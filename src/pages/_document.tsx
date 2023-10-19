@@ -3,10 +3,13 @@ import Document from 'next/document';
 import { jss, SheetsRegistry, JssProvider, createGenerateId } from 'react-jss';
 import globalPlugin from 'jss-global';
 
-// eslint-disable-next-line import/no-default-export
 export default class JssDocument extends Document {
-  // eslint-disable-next-line @typescript-eslint/explicit-module-boundary-types
-  static async getInitialProps(ctx) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any, @typescript-eslint/explicit-module-boundary-types
+  static async getInitialProps(ctx: any): Promise<{
+    styles: React.JSX.Element;
+    html: string;
+    head?: (JSX.Element | null)[] | undefined;
+}> {
     const registry = new SheetsRegistry();
     const generateId = createGenerateId();
     jss.use(globalPlugin());

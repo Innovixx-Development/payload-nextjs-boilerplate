@@ -11,6 +11,7 @@ module.exports = {
     '@innovixx/eslint-config/configs/base',
     '@innovixx/eslint-config/configs/react',
     'plugin:@typescript-eslint/recommended',
+    'plugin:@next/next/recommended',
   ],
   settings: {
     'import/resolver': {

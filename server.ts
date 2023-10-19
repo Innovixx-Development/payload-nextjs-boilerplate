@@ -1,6 +1,5 @@
 /* eslint-disable no-console */
-import path from 'path';
-import next from 'next';
+import nextjs from 'next';
 import nextBuild from 'next/dist/build';
 import express from 'express';
 import payload from 'payload';
@@ -44,23 +43,19 @@ const start = async () => {
   }
 
   if (!process.env.NEXT_BUILD) {
-    const nextApp = next({ dev });
+    const nextApp = nextjs({
+      dev,
+    });
 
     const nextHandler = nextApp.getRequestHandler();
 
-    if (dev) {
-      server.get('/sandbox', (_, res) => {
-        res.sendFile(path.join(__dirname, './server/sandbox.html'));
-      });
-    }
-
-    server.get('*', (req, res) => nextHandler(req, res));
+    server.use((req, res) => nextHandler(req, res));
 
     nextApp.prepare().then(() => {
-      console.log('NextJS started');
+      payload.logger.info('Starting Next.js...');
 
       server.listen(process.env.PORT, async () => {
-        console.log(`Server listening on ${process.env.PORT}...`);
+        payload.logger.info(`Next.js App URL: ${process.env.NEXT_PUBLIC_SERVER_URL}`);
       });
     });
   } else {

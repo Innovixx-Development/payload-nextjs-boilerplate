@@ -1,5 +1,6 @@
 require('dotenv').config();
-const { sizes } = require('./src/blocks/Image/sizes');
+const ContentSecurityPolicy = require('./csp');
+
 
 module.exports = {
   publicRuntimeConfig: {
@@ -9,11 +10,20 @@ module.exports = {
     domains: [
       new URL(process.env.NEXT_PUBLIC_SERVER_URL).hostname,
     ],
-    deviceSizes: sizes,
+  },
+  async headers() {
+    const headers = [];
+    headers.push({
+      source: '/(.*)',
+      headers: [
+        {
+          key: 'Content-Security-Policy',
+          value: ContentSecurityPolicy,
+        },
+      ],
+    });
+
+    return headers;
   },
   pageExtensions: ['tsx', 'js'],
-  i18n: {
-    locales: ['en'],
-    defaultLocale: 'en',
-  },
 };
