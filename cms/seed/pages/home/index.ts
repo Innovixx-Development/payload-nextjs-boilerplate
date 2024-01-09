@@ -1,16 +1,14 @@
 import { Payload } from 'payload';
-import { SeedMedia } from '../../types';
 import pageData from './data.json';
+import { SeededCollections } from '../..';
 
-export const seedHomePage = async (payload: Payload, medias: SeedMedia): Promise<void> => {
+export const seedHomePage = async (payload: Payload, collections: SeededCollections): Promise<void> => {
   let data = JSON.stringify(pageData);
 
-  data = data.replace(/{{PAYLOAD_OG_IMAGE}}/g, medias.find((media) => media.filename === 'payload.jpg')?.id);
+  data = data.replace(/{{PAYLOAD_OG_IMAGE}}/g, collections.media?.find((media) => media.filename === 'payload.jpg')?.id);
 
   await payload.create({
     collection: 'page',
     data: JSON.parse(data),
   });
-
-  payload.logger.info('Home Page seeded.');
 };

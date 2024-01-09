@@ -1,6 +1,6 @@
-/* eslint-disable no-console */
 import path from 'path';
 import { Payload } from 'payload';
+import { Media } from '../../../payload-types';
 
 const medias = [
   {
@@ -9,15 +9,9 @@ const medias = [
   },
 ];
 
-export const seedMedia = async (payload: Payload): Promise<void> => {
-  const existingMedia = await payload.find({
-    collection: 'media',
-  });
-
-  if (existingMedia.docs.length === 0) {
-    // eslint-disable-next-line no-restricted-syntax
-    for (const media of medias) {
-      // eslint-disable-next-line no-await-in-loop
+export const seedMedia = async (payload: Payload): Promise<Media[]> => {
+  await Promise.all(
+    medias.map(async (media) => {
       await payload.create({
         collection: 'media',
         data: {
@@ -25,7 +19,12 @@ export const seedMedia = async (payload: Payload): Promise<void> => {
         },
         filePath: path.resolve(__dirname, `./assets/${media.fileName}`),
       });
-    }
-    payload.logger.info('Media Seeded');
-  }
+    }),
+  );
+
+  payload.logger.info('Media Seeded');
+
+  return payload.find({
+    collection: 'media',
+  }).then((res) => res.docs);
 };

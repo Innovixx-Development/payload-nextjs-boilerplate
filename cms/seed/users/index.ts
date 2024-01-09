@@ -1,5 +1,6 @@
 /* eslint-disable no-console */
 import { Payload } from 'payload';
+import { User } from '../../../payload-types';
 
 const users = [
   {
@@ -8,20 +9,9 @@ const users = [
   },
 ];
 
-export const seedUsers = async (payload: Payload): Promise<void> => {
-  const user = await payload.find({
-    collection: 'user',
-    where: {
-      email: {
-        in: users.map((u) => u.email),
-      },
-    },
-  });
-
-  if (user.docs.length === 0) {
-    // eslint-disable-next-line no-shadow, no-restricted-syntax
-    for (const user of users) {
-      // eslint-disable-next-line no-await-in-loop
+export const seedUsers = async (payload: Payload): Promise<User[]> => {
+  await Promise.all(
+    users.map(async (user) => {
       await payload.create({
         collection: 'user',
         data: {
@@ -29,7 +19,12 @@ export const seedUsers = async (payload: Payload): Promise<void> => {
           password: user.password,
         },
       });
-    }
-    payload.logger.info('Users seeded.');
-  }
+    }),
+  );
+
+  payload.logger.info('Users seeded.');
+
+  return payload.find({
+    collection: 'user',
+  }).then((res) => res.docs);
 };
